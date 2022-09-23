@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <!-- 👇 Output type should be "Analyzer" -->
     <ProjectReference Include="..\ToString\ToString.csproj"
                       OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
   </ItemGroup>

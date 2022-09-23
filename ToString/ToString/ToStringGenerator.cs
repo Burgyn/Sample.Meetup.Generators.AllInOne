@@ -16,6 +16,7 @@ namespace ToString
 
         public void Execute(GeneratorExecutionContext context)
         {
+            // 👇 Generate ToStringAttribute.
             string attribute = @"
 using System;
 namespace ToString
@@ -32,10 +33,13 @@ namespace ToString
             {
                 foreach (ClassDeclarationSyntax candidate in actorSyntaxReciver.Candidates)
                 {
+                    // 👇 Generate model.
                     ClassModel model = GenerateModel(candidate, context.Compilation);
 
+                    // 👇 Format code.
                     string code = Format(Generate(model));
 
+                    // 👇 Add source code.
                     context.AddSource($"{model.Name}.cs", SourceText.From(code, Encoding.UTF8));
                 }
             }
@@ -47,7 +51,7 @@ namespace ToString
         {
             CompilationUnitSyntax root = syntax.GetCompilationUnit();
             SemanticModel classSemanticModel = compilation.GetSemanticModel(syntax.SyntaxTree);
-            var classSymbol = classSemanticModel.GetDeclaredSymbol(syntax) as INamedTypeSymbol;
+            var classSymbol = classSemanticModel.GetDeclaredSymbol(syntax);
 
             return new ClassModel()
             {
