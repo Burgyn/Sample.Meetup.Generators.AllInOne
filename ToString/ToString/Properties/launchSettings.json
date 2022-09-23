@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ToString": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\ToString.Demo\\ToString.Demo.csproj"
+    }
+  }
+}
